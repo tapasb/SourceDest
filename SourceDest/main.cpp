@@ -16,7 +16,44 @@ using namespace std;
 bool isCorrectImpl(string input,string output);
 
 int main(int argc, const char * argv[]) {
-   
+    // Test cases for isNeighbour
+    printf("--Test cases for isNeighbour--\n");
+    SourceDest* s = new SourceDest();
+    s->isNeighbour("aaaaa", "aaaab") ? printf("passed\n"):printf("failed\n");
+    s->isNeighbour("aaacb", "aaaab") ? printf("passed\n"):printf("failed\n");
+    s->isNeighbour("aadcb", "aaacb") ? printf("passed\n"):printf("failed\n");
+    s->isNeighbour("aedcb", "aadcb") ? printf("passed\n"):printf("failed\n");
+    s->isNeighbour("fedcb", "aedcb") ? printf("passed\n"):printf("failed\n");
+    s->isNeighbour("aaaaa", "aaabb") ? printf("failed\n"):printf("passed\n");
+    s->isNeighbour("aaabb", "aaccb") ? printf("failed\n"):printf("passed\n");
+    s->isNeighbour("aaccb", "aaaaa") ? printf("failed\n"):printf("passed\n");
+    s->isNeighbour("ddddd", "aaabb") ? printf("failed\n"):printf("passed\n");
+    s->isNeighbour("ddddd", "aaaad") ? printf("failed\n"):printf("passed\n");
+    
+    // Test cases for neighbour closest to dest
+    printf("--Test cases for neighbour closest to dest--\n");
+    //Test Case - 1
+    set<string> dictionary{"start","stark","stack","slack","black","blank","bland","brand","braid","brain"};
+    "start"==s->neighbourClosestToDest("smart", "brain", dictionary) ? printf("passed\n"):printf("failed\n");
+    
+    //Test Case - 2
+    set<string> dictionary1{"smark","smark"};
+    "smark"==s->neighbourClosestToDest("smart", "smark", dictionary1) ? printf("passed\n"):printf("failed\n");
+    
+    //Test Case - 3
+    set<string> dictionary2{"bbcde","abcee","abcdf"};
+    "abcdf"==s->neighbourClosestToDest("abcde", "abcdf", dictionary2) ? printf("passed\n"):printf("failed\n");
+    
+    //Test Case - 4
+    set<string> dictionary4{"abcee","abcdf","bbcde"};
+    "bbcde"==s->neighbourClosestToDest("abcde", "bbcde", dictionary2) ? printf("passed\n"):printf("failed\n");
+    
+    //Test Case - 5
+    set<string> dictionary5{"accde","aaade","abcee","accda","aaaae","aaaaa","abcdf","aacde","aaaaa"};
+    "aacde"==s->neighbourClosestToDest("abcde", "aaaaa", dictionary5) ? printf("passed\n"):printf("failed\n");
+    
+    printf("--Test cases for shorted path--\n");
+    // Test Cases for finding shorted path
     // Test Case - 1
     string input = "smart,start,stark,stack,slack,black,blank,bland,brand,braid,brain";
     string output = "smart,start,stark,stack,slack,black,blank,bland,brand,braid,brain";

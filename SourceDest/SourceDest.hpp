@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <string>
 #include <set>
-#include <queue>
 
 using namespace std;
 
@@ -20,10 +19,15 @@ class SourceDest
 {
 public:
     vector<string> getPath(string source,string dest,set<string> words);
-private:
-    queue<string> q;
+    
+    // This to function finally should be private. Made public to run test cases
     bool isNeighbour(string word,string nextWord);
     string neighbourClosestToDest(string word,string dest,set<string>& words);
+    
+private:
+    
+    
+    
 };
 
 #endif /* SourceDest_hpp */

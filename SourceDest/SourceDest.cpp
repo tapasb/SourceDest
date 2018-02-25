@@ -15,11 +15,12 @@
 
 vector<string> SourceDest::getPath(string source, string dest, set<string> words){
     vector<string> retArray;
-    this->q.push(source);
+    queue<string> q;
+    q.push(source);
     words.insert(dest);
     while(!q.empty()){
-        string currentWord = this->q.front();
-        this->q.pop();
+        string currentWord = q.front();
+        q.pop();
         string tmp = neighbourClosestToDest(currentWord,dest,words);
         if(!tmp.empty()){
             words.erase(tmp);
